@@ -1,16 +1,4 @@
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- The Law UI
---[[
-    Methods:
-        ui = LawsUi()
-    Function :
-        ui:addSprite(file,name)      -- creates a LawsSprite with file and name it
-		ui:eventChecker(msg,wParam)  -- checks events and execute callbacks in OnWndMsg
-    Members :
-        ui.pages           -- page list
-		ui.input		   -- input handler
-]]
-class'LawsUi'
+'LawsUi'
 function LawsUi:__init()
 	self.pages = {}
 	self.input = LawsInput()
@@ -57,17 +45,6 @@ end
 
 
 
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- The Law Sprite
---[[
-    Methods:
-        sprite = LawsSprite(path to file, sprite name)
-    Function :
-        sprite:hover()      -- return if mouse is over sprite
-		sprite:setPosition(x,y)     --moves sprite to x,y cordinates
-		sprite:On(event,callback)   --add callback to event
-]]
 class'LawsSprite'
 function LawsSprite:__init(file)
 	self.layer = 1
@@ -113,18 +90,7 @@ function LawsSprite:hover()
     return (posX >= self.x and posX <= self.x + self.width and posY >= self.y and posY <= self.y + self.height)
 end
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- The Law Input
---[[
-    Methods:
-        input = LawsSprite(path to file, sprite name)
-    Function :
-		input:startInput()      -- 
-		input:stopInput()      -- 
-		input:getInput()      -- 
-		input:clearInput()      -- 
-		input:getCharFromKey(msg)      -- 
-]]
+
 class'LawsInput'
 
 function LawsInput:__init()
@@ -200,18 +166,7 @@ function LawsInput:getCharFromKey(msg)
 		return ""
 	end
 end
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- The Law Text
---[[
-    Methods:
-        input = LawsSprite(path to file, sprite name)
-    Function :
-		input:startInput()      -- 
-		input:stopInput()      -- 
-		input:getInput()      -- 
-		input:clearInput()      -- 
-		input:getCharFromKey(msg)      -- 
-]]
+
 class'LawsText'
 function LawsText:__init(value)
 	self.value= value
@@ -255,16 +210,7 @@ end
 function LawsText:On(eventType,callback)
 	table.insert(self.events, {_type=eventType,_callback=callback})
 end
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- The Law Page
---[[
-    Methods:
-        sprite = LawsSprite(path to file, sprite name)
-    Function :
-        sprite:hover()      -- return if mouse is over sprite
-		sprite:setPosition(x,y)     --moves sprite to x,y cordinates
-		sprite:On(event,callback)   --add callback to event
-]]
+
 class'LawsPage'
 function LawsPage:__init()
 	self.objects = {}
