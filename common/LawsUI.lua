@@ -91,6 +91,7 @@ function LawsSprite:hover()
     return (posX >= self.x and posX <= self.x + self.width and posY >= self.y and posY <= self.y + self.height)
 end
 
+
 class'LawsInput'
 
 function LawsInput:__init()
