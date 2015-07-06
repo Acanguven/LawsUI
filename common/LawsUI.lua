@@ -38,7 +38,7 @@ function LawsUi:drawManager()
 							self.pages[x].objects[i].data.sprite:Draw(self.pages[x].objects[i].data.x,self.pages[x].objects[i].data.y,0xFF)
 						end
 						if self.pages[x].objects[i]._type == "text" then 
-							DrawText(self.pages[x].objects[i].data.value,self.pages[x].objects[i].data.size, self.pages[x].objects[i].data.x, self.pages[x].objects[i].data.y, self.pages[x].objects[i].data.color)
+							DrawText(self.pages[x].objects[i].data.text,self.pages[x].objects[i].data.size, self.pages[x].objects[i].data.x, self.pages[x].objects[i].data.y, self.pages[x].objects[i].data.color)
 						end					
 					end
 				end
@@ -171,8 +171,8 @@ function LawsInput:getCharFromKey(msg)
 end
 
 class'LawsText'
-function LawsText:__init(value)
-	self.value= value
+function LawsText:__init(text)
+	self.text = text
 	self.color = 0xFF00FF00
 	self.size = 12
 	self.x = 0
@@ -183,7 +183,7 @@ function LawsText:__init(value)
 end
 
 function LawsText:hover()
-	local textArea = GetTextArea(self.value,self.size)
+	local textArea = GetTextArea(self.text,self.size)
     local posX, posY = GetCursorPos().x, GetCursorPos().y
     if textArea.y == nil then textArea.y = textArea.x end
     if textArea.x < 0 then
@@ -242,8 +242,8 @@ function LawsPage:addSprite(file)
 	end
 end
 
-function LawsPage:addText(value)
-	local text = LawsText(value)
+function LawsPage:addText(text)
+	local text = LawsText(text)
 	table.insert(self.objects, {_type="text",data=text})
 	return text
 end
