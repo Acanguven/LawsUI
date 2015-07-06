@@ -2,6 +2,8 @@ class'LawsUi'
 function LawsUi:__init()
 	self.pages = {}
 	self.input = LawsInput()
+	AddDrawCallback(function() self:drawManager() end)
+	AddMsgCallback(function(msg,wParam) self:eventChecker(msg,wParam) end)
 	return self
 end
 
